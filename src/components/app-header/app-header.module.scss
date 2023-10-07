@@ -1,0 +1,21 @@
+@import "../../variables.scss";
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--secondaryBackground);
+  padding: 8px 20px;
+}
+
+.logoSection {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 16px;
+  color: #838691;
+}
+
+.logo {
+  cursor: pointer;
+}

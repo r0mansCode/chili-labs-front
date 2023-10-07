@@ -1,0 +1,25 @@
+@import "../../variables.scss";
+
+.productPageContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.tableContainer {
+  width: 100%;
+  max-width: 1200px;
+  overflow-y: scroll;
+  padding: 16px 28px;
+}
+
+.itemsCount {
+  width: 100%;
+  text-align: start;
+}
+
+.itemsCount {
+  margin-bottom: 8px;
+}
