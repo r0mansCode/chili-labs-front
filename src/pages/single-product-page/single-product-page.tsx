@@ -5,6 +5,7 @@ import { useAppSelector } from "../../hooks/redux";
 import { Item } from "../../models";
 import { SVGIcon } from "../../components/svg-icon/svg-icon";
 import { IconNames } from "../../constants/constants";
+import { SingleProductItem } from "../../components/single-product-item/single-product-item";
 
 export const SingleProductPage = () => {
   const { productId } = useParams();
@@ -22,27 +23,19 @@ export const SingleProductPage = () => {
     <>
       {!!product && (
         <div>
-          <div className={s.singleDeviceNav}>
-            <div className={s.singleDeviceTitle}>{product.name}</div>
+          <div className={s.singleItemNav}>
+            <div className={s.singleProductTitle}>{product.name}</div>
             <SVGIcon
               iconName={IconNames.backIcon}
               onClick={() => navigate(-1)}
-              className={s.singleDeviceBackIcon}
+              className={s.singleProductBackIcon}
             />
           </div>
-          <div className={s.deviceContainer}>
-            <div className={s.deviceSubContainer}>
-              <div className={s.infoContainer}>
-                {productInformationList(product).map(
-                  (row) =>
-                    !!row.info && (
-                      <div className={s.infoRow} key={row.name}>
-                        <div>{row.name}</div>
-                        <div>{row.info}&nbsp;</div>
-                      </div>
-                    )
-                )}
-              </div>
+          <div className={s.productContainer}>
+            <div className={s.infoContainer}>
+              {productInformationList(product).map((item) => (
+                <SingleProductItem singleItem={item} />
+              ))}
             </div>
           </div>
         </div>

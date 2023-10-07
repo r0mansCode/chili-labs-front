@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { useAppDispatch } from "./hooks/redux";
+import { useAppDispatch, useAppSelector } from "./hooks/redux";
 import { useEffect } from "react";
 import { fetchItems } from "./store/reducers/ActionCreators";
 import { useFilter } from "./hooks/useFilterHook";
@@ -9,18 +9,28 @@ import { SingleProductPage } from "./pages/single-product-page/single-product-pa
 
 function App() {
   const dispatch = useAppDispatch();
+  const { filteredItems, filteredByNameItems } = useFilter();
+  const { isLoading, error } = useAppSelector((state) => state.dataReducer);
 
   useEffect(() => {
     dispatch(fetchItems());
   }, []);
 
-  const { filteredItems } = useFilter();
-
   return (
     <>
       <Routes>
         <Route path='/' element={<AppHeader />}>
-          <Route index element={<ProductsPage items={filteredItems} />} />
+          <Route
+            index
+            element={
+              <ProductsPage
+                items={filteredItems}
+                isLoading={isLoading}
+                error={error}
+                filteredByNameItems={filteredByNameItems}
+              />
+            }
+          />
           <Route path='/product/:productId' element={<SingleProductPage />} />
         </Route>
       </Routes>

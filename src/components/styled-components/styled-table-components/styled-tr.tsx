@@ -6,7 +6,6 @@ export const StyledTr = styled.tr`
   }
 
   &:hover:not(#tableHead) {
-    background-color: #d1b8b8;
-    color: white;
+    background-color: var(--hoverBackground);
   }
 `;
