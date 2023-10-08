@@ -10,7 +10,6 @@ export const AppHeader = () => {
       <div className={s.headerContainer}>
         <div className={s.logoSection}>
           <img src={logo} className={s.logo} onClick={() => navigate("/")} />
-          <div>Products</div>
         </div>
         <div>Author/Romans Kovalenoks</div>
       </div>
